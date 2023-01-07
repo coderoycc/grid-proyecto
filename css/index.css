@@ -9,15 +9,18 @@
    --negro: rgb(30,30,30);
    --naranja-claro: #fdeee7; 
    --naranja-oscuro: rgb(220,77,21);  
-   --plomo-osc:#d6d6d6;
+   --plomo-osc:#eeeeee;
+   --plomo-osc2: #777777;
 }
-*{
+*, ::after, ::before{
    margin: 0;
    padding: 0;
    box-sizing: border-box;
 }
+
 body{
    font-family: Arial, Helvetica, sans-serif;
+   width: 100%;
 }
 .material-symbols-outlined {
   font-variation-settings:
@@ -68,16 +71,16 @@ header .contactos{
    grid-template-rows: repeat(2,auto);
    justify-content: center;
    align-items: center;
-   gap: 0 .3em;
+   /* gap: 0 .3em; */
 }
 header .contactos .icon-contacto{
    width: 40px;
    height: 40px;
    grid-row: 1 / 3;
    grid-column: 1 / 2;
-   border: 2px solid var(--plomo-osc);
+   border: 2px solid var(--plomo-osc2);
    border-radius: 50%;
-   color: var(--plomo-osc);
+   color: var(--plomo-osc2);
    cursor: pointer;
 }
 header .contactos .icon-contacto:hover{
@@ -119,7 +122,7 @@ header .contactos p{
    background-color: var(--prin-naranja);
    display: grid;
    justify-items: center;
-   grid-template-columns: repeat(3,1fr);
+   grid-template-columns: repeat(3,minmax(200px, 1fr));
    align-items: center;
 }
 
@@ -146,8 +149,6 @@ header .contactos p{
 .barra .buscar span{
    background-color: transparent;
    font-size: 18px;
-   /* width: 40px;
-   height: 40px; */
    color: var(--prin-naranja);
    position: absolute;
    right: 6px;
@@ -156,15 +157,151 @@ header .contactos p{
 }
 .barra .icono__barra{
    color: var(--naranja-claro);
-   font-weight: bold; 
-   vertical-align: center;   
+   font-weight: bold;
+   width: 150px;
+   height: 70px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: .5rem;
+   cursor: pointer;
+}
+.barra .icono__barra:hover{
+   background-color: var(--naranja-oscuro);
 }
 .barra .icono__barra h4{
    display: inline-block;
-   
+}
+
+/*PRODUCTOS POR CATEGORIA*/
+.categoria{
+   width: 80%;
+   margin:10px auto;
+   display: grid;
+   background-color: #fff;
+   grid-template-columns: repeat(5,minmax(100px, 1fr));
+   grid-template-rows: 10% 90%;
+   grid-auto-flow: row; 
+   grid-template-areas: 
+      "titulo titulo titulo titulo titulo"
+      "card-1 card-2 card-3 card-4 card-5";
+}
+.categoria .titulo{
+   font-size: 25px;
+   color: var(--negro);
+   margin: 10px;
+   grid-area: titulo;
+}
+.categoria .card{
+   width: 100%;
+   height: 370px;
+   border: 1px solid var(--plateado);
+   cursor:pointer;
+   background-color: var(--blanco);
+}
+.categoria .card:hover{
+   transform: scale(1.05);
+   z-index: 10;
+}
+.categoria .card .img{
+   width: auto;
+   height: 220px;
+}
+.categoria .card h4{
+   text-transform: uppercase;
+   padding: 10px 15px;
+   color: var(--negro);
+}
+.categoria .card p{
+   padding: 8px;
+   text-align: left;
+}
+.categoria .card p > span{
+   color: var(--prin-naranja);
+}
+.categoria .card h3{
+   padding: 10px;
+   text-align: right;
+   color: var(--negro);
+   font-weight: bold;
+}
+
+
+.galeria{
+   width: 100%;
+   height: auto;
+   margin: 30px 0px;
+   display: grid;
+   grid-template-columns: repeat(4,1fr);
+   grid-template-rows: repeat(2,1fr);
+}
+.galeria .img{
+   height: 450px;
+}
+.galeria .img-large{
+   grid-column: 2 / 4;
+   grid-row: 1 / 3;
+}
+
+/* FOOTER */
+footer{
+   width: 100%;
+   height: 300px;
+   margin-top: 70px;
+   border-top: 1px solid var(--plomo-osc);
+   background-color: var(--blanco);
+   display:grid;
+   grid-template-columns: repeat(4,1fr);
+   grid-template-rows: 100%;
+   align-items: center;
+   justify-items: center;
+}
+footer div h1{
+   color: var(--negro);
+   font-size: 20px;
+}
+footer div a{
+   display: block;
+   font-size:17px;
+   text-decoration: none;
+   color: var(--sec-contra);
+   padding: 10px 0px;
+}
+footer div a:hover{
+   color: var(--prin-contra);
+   text-decoration: underline;
+}
+footer .nosotros{
+   grid-column: 1 / 2;
+}
+footer .servicio{
+   grid-column: 2 / 3;
+}
+footer .redes{
+   grid-column: 3 / 5;
+}
+
+footer .redes .iconos-redes{
+   width: 450px;
+   height: 100px;
+   background-color: var(--plateado);
+   display: grid;
+   grid-template-columns: repeat(6, 1fr);
+   justify-items: center;
+   align-content: center;
+}
+footer .redes .iconos-redes i{
+   font-size: 42px;
+   color: var(--plomo-osc2);
+   -webkit-filter: drop-shadow(1px 1px 1px var(--negro));
+   filter:drop-shadow(1px 1px 1px var(--negro)); 
+   cursor:pointer;
+}
+footer .redes .iconos-redes i:hover{
+   color: var(--sec-contra);
 }
 img{
    object-fit: cover;
    width: 100%;
-
+   height: 100%;
 }
